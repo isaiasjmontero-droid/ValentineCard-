@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffd6e8, #ff9fc6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      border-radius: 25px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    button {
+      border: none;
+      padding: 15px 25px;
+      margin: 10px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .yes {
+      background: #ff2f7d;
+      color: white;
+      font-weight: bold;
+    }
+
+    .no {
+      background: #ffb6d5;
+      color: #7a0038;
+      font-weight: bold;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      background: white;
+      color: #ff2f7d;
+      font-weight: bold;
+    }
+
+    .back {
+      margin-top: 15px;
+      background: #fff;
+      color: #ff2f7d;
+      font-weight: bold;
+    }
+
+    .message {
+      font-size: 1.3rem;
+      margin: 20px 0;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="mainCard">
+    <h1>Will you be my Valentine? 💘</h1>
+    <button class="yes" onclick="showYes()">✅ YES</button>
+    <button class="no" onclick="showNo()">❌ NO</button>
+  </div>
+
+  <script>
+    function showYes() {
+      document.getElementById("mainCard").innerHTML = `
+        <h1>Awww okay 😍</h1>
+        <div class="message">What do you wanna do?</div>
+        <div class="options">
+          <button onclick="pickDate('🧊 Go ice skating')">🧊 Go ice skating</button>
+          <button onclick="pickDate('🕯️ Make a candle')">🕯️ Make a candle</button>
+          <button onclick="pickDate('🍽️ Dinner + dessert')">🍽️ Dinner + dessert</button>
+          <button onclick="pickDate('🎬 Movie night')">🎬 Movie night</button>
+        </div>
+        <button class="back" onclick="goBack()">⬅️ Back</button>
+      `;
+    }
+
+    function showNo() {
+      document.getElementById("mainCard").innerHTML = `
+        <h1>I guess I’ll try again later 🥹</h1>
+        <button class="back" onclick="goBack()">⬅️ Back to YES / NO</button>
+      `;
+    }
+
+    function pickDate(choice) {
+      document.getElementById("mainCard").innerHTML = `
+        <h1>Yessss 😍💘</h1>
+        <div class="message">Okay it’s official!</div>
+        <div class="message">You picked: <br><span style="font-size:1.5rem;">${choice}</span></div>
+        <div class="message">Text me so we can plan it 🥰</div>
+        <button class="back" onclick="goBack()">⬅️ Back</button>
+      `;
+    }
+
+    function goBack() {
+      location.reload();
+    }
+  </script>
+
+</body>
+</html>
