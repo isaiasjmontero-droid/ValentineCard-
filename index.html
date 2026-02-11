@@ -7,26 +7,6 @@
 
   <style>
     body {
-      <!-- Music Button -->
-<button id="playMusicBtn"
-  style="position: fixed; top: 20px; right: 20px; padding: 12px 18px; background:#ff2f7d; color:white; border:none; border-radius:25px; font-size:1rem; cursor:pointer; z-index:999;">
-  🎶 Play Music
-</button>
-
-<iframe id="musicFrame" width="0" height="0"
-  src=""
-  frameborder="0" allow="autoplay"
-  style="display:none;">
-</iframe>
-
-<script>
-  document.getElementById("playMusicBtn").addEventListener("click", function() {
-    var player = document.getElementById("musicFrame");
-    player.src = "https://www.youtube.com/embed/3MRExEWSpfc?autoplay=1&loop=1&playlist=3MRExEWSpfc";
-    this.style.display = "none";
-  });
-</script>
-
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #ffd6e8, #ff9fc6);
@@ -61,14 +41,8 @@
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.9;
-      }
-      100% {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
     }
 
     .card {
@@ -122,9 +96,7 @@
       box-shadow: 0 0 12px rgba(255, 182, 213, 0.6);
     }
 
-    button:hover {
-      transform: scale(1.06);
-    }
+    button:hover { transform: scale(1.06); }
 
     .options button {
       display: block;
@@ -155,10 +127,37 @@
       font-size: 1rem;
       opacity: 0.9;
     }
+
+    /* Music button */
+    #playMusicBtn {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      padding: 12px 16px;
+      background: #ff2f7d;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 0 14px rgba(255, 47, 125, 0.55);
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Music Button -->
+  <button id="playMusicBtn">🎶 Play Music</button>
+
+  <!-- Invisible YouTube player -->
+  <iframe id="musicFrame" width="0" height="0"
+    src=""
+    frameborder="0"
+    allow="autoplay"
+    style="display:none;">
+  </iframe>
 
   <!-- Floating hearts -->
   <div class="hearts" id="hearts"></div>
@@ -171,6 +170,13 @@
   </div>
 
   <script>
+    // Start music on tap (iPhone friendly)
+    document.getElementById("playMusicBtn").addEventListener("click", function () {
+      const player = document.getElementById("musicFrame");
+      player.src = "https://www.youtube.com/embed/3MRExEWSpfc?autoplay=1&loop=1&playlist=3MRExEWSpfc";
+      this.style.display = "none";
+    });
+
     // Floating hearts generator
     const heartsContainer = document.getElementById("hearts");
 
@@ -188,9 +194,7 @@
 
       heartsContainer.appendChild(heart);
 
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
+      setTimeout(() => heart.remove(), 8000);
     }
 
     setInterval(createHeart, 300);
@@ -227,9 +231,7 @@
       `;
     }
 
-    function goBack() {
-      location.reload();
-    }
+    function goBack() { location.reload(); }
   </script>
 
 </body>
