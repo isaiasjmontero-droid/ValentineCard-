@@ -199,21 +199,22 @@
 
     setInterval(createHeart, 300);
 
-    // Valentine flow
+    // YES shows options
     function showYes() {
       document.getElementById("mainCard").innerHTML = `
         <h1>Awww okay 😍</h1>
         <div class="message">What do you wanna do?</div>
         <div class="options">
-          <button onclick="pickDate('🧊 Go ice skating')">🧊 Go ice skating</button>
-          <button onclick="pickDate('🕯️ Make a candle')">🕯️ Make a candle</button>
-          <button onclick="pickDate('🍽️ Dinner + dessert')">🍽️ Dinner + dessert</button>
-          <button onclick="pickDate('🎬 Movie night')">🎬 Movie night</button>
+          <button onclick="textMe('🧊 Go ice skating')">🧊 Go ice skating</button>
+          <button onclick="textMe('🕯️ Make a candle')">🕯️ Make a candle</button>
+          <button onclick="textMe('🍽️ Dinner + dessert')">🍽️ Dinner + dessert</button>
+          <button onclick="textMe('🎬 Movie night')">🎬 Movie night</button>
         </div>
         <button class="back" onclick="goBack()">⬅️ Back</button>
       `;
     }
 
+    // NO response
     function showNo() {
       document.getElementById("mainCard").innerHTML = `
         <h1>I guess I’ll try again later 🥹</h1>
@@ -221,17 +222,16 @@
       `;
     }
 
-    function pickDate(choice) {
-      document.getElementById("mainCard").innerHTML = `
-        <h1>Yessss 😍💘</h1>
-        <div class="message">Okay it’s official!</div>
-        <div class="message">You picked:<br><span style="font-size:1.6rem;">${choice}</span></div>
-        <div class="message">Text me so we can plan it 🥰</div>
-        <button class="back" onclick="goBack()">⬅️ Back</button>
-      `;
+    // Text message sender
+    function textMe(choice) {
+      let message = `YES 😍💘 I’ll be your Valentine! I choose: ${choice} 🥰`;
+      let url = "sms:7739431427?&body=" + encodeURIComponent(message);
+      window.location.href = url;
     }
 
-    function goBack() { location.reload(); }
+    function goBack() {
+      location.reload();
+    }
   </script>
 
 </body>
