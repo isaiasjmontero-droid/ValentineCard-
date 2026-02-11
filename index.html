@@ -7,6 +7,26 @@
 
   <style>
     body {
+      <!-- Music Button -->
+<button id="playMusicBtn"
+  style="position: fixed; top: 20px; right: 20px; padding: 12px 18px; background:#ff2f7d; color:white; border:none; border-radius:25px; font-size:1rem; cursor:pointer; z-index:999;">
+  🎶 Play Music
+</button>
+
+<iframe id="musicFrame" width="0" height="0"
+  src=""
+  frameborder="0" allow="autoplay"
+  style="display:none;">
+</iframe>
+
+<script>
+  document.getElementById("playMusicBtn").addEventListener("click", function() {
+    var player = document.getElementById("musicFrame");
+    player.src = "https://www.youtube.com/embed/3MRExEWSpfc?autoplay=1&loop=1&playlist=3MRExEWSpfc";
+    this.style.display = "none";
+  });
+</script>
+
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #ffd6e8, #ff9fc6);
